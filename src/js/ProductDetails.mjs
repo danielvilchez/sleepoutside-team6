@@ -30,7 +30,7 @@ export default class ProductDetails {
             <h2 class="divider">${this.product.NameWithoutBrand}</h2>
 
             <img class="divider"
-                src="${this.product.Image}"
+                src="${this.product.Images.PrimaryMedium}"
                 alt="${this.product.Name}" />
 
             <p class="product-card__price">$${this.product.FinalPrice}</p>
