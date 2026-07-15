@@ -6,6 +6,14 @@ loadHeaderFooter();
 
 const category = getParam("category") || "tents";
 
+const titleElement = document.querySelector(".products-title");
+
+if (titleElement) {
+    titleElement.textContent = `Top Products: ${category
+        .replace("-", " ")
+        .replace(/\b\w/g, letter => letter.toUpperCase())}`;
+}
+
 const dataSource = new ProductData();
 
 const listElement = document.querySelector(".product-list");
