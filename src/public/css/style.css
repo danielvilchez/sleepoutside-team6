@@ -90,7 +90,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
@@ -181,6 +181,17 @@ button {
 .product-card h3,
 .product-card p {
   margin: 0.5em 0;
+}
+
+.discount-badge {
+  display: inline-block;
+  background-color: #d32f2f;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
 }
 
 .card__brand {
