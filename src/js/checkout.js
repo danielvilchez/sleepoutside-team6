@@ -7,12 +7,9 @@ const checkout = new CheckoutProcess(
     ".order-summary"
 );
 
-
 checkout.init();
 
-
 // Mostrar productos del carrito
-
 const cartItems = getLocalStorage("so-cart");
 
 const productList = document.querySelector(".product-list");
@@ -43,41 +40,61 @@ cartItems.forEach((item) => {
         </div>
     `;
 
-
     productList.appendChild(li);
-
 });
 
 
 // Calcular totales después del Zip Code
-
 const zipInput = document.querySelector(
     'input[name="zip"]'
 );
 
-
 if (zipInput) {
-
     zipInput.addEventListener("blur", () => {
-
         checkout.calculateOrderTotal();
-
     });
 
 }
 
-
-
 const form = document.querySelector("#checkout-form");
-
 
 if (form) {
 
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
 
         event.preventDefault();
 
-        alert("Order submitted!");
+
+        const formData = {
+            firstName: form.firstName.value,
+            lastName: form.lastName.value,
+
+            street: form.street.value,
+            city: form.city.value,
+            state: form.state.value,
+            zip: form.zip.value,
+
+            cardNumber: form.cardNumber.value,
+            expiration: form.expiration.value,
+            securityCode: form.securityCode.value
+        };
+
+
+        try {
+            console.log(formData);
+            const response = await checkout.checkout(formData);
+
+            console.log(response);
+
+            alert("Order submitted!");
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("There was an error submitting your order.");
+
+        }
 
     });
 

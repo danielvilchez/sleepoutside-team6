@@ -1,4 +1,5 @@
 import { getLocalStorage } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
 export default class CheckoutProcess {
 
@@ -12,6 +13,8 @@ export default class CheckoutProcess {
         this.shipping = 0;
         this.tax = 0;
         this.orderTotal = 0;
+
+        this.externalServices = new ExternalServices();
     }
 
 
@@ -69,6 +72,46 @@ export default class CheckoutProcess {
 
     }
 
+    async checkout(formData) {
+
+        const order = {
+
+            orderDate: new Date().toISOString(),
+
+            fname: formData.firstName,
+            lname: formData.lastName,
+
+            street: formData.street,
+            city: formData.city,
+            state: formData.state,
+            zip: formData.zip,
+
+            cardNumber: formData.cardNumber,
+            expiration: formData.expiration,
+            securityCode: formData.securityCode,
+
+            items: this.list.map((item) => {
+
+                return {
+                    id: item.Id,
+                    quantity: 1
+                };
+
+            }),
+
+            orderTotal: this.orderTotal
+
+        };
+
+
+        console.log(JSON.stringify(order, null, 2));
+
+
+        return await this.externalServices.checkout(order);
+
+    }
+
+
 
     displayOrderTotals() {
 
@@ -95,24 +138,20 @@ export default class CheckoutProcess {
                 `${this.outputSelector} #order-total`
             );
 
-
         if (subtotal) {
             subtotal.innerText =
                 `$${this.itemTotal.toFixed(2)}`;
         }
-
 
         if (tax) {
             tax.innerText =
                 `$${this.tax.toFixed(2)}`;
         }
 
-
         if (shipping) {
             shipping.innerText =
                 `$${this.shipping.toFixed(2)}`;
         }
-
 
         if (total) {
             total.innerText =
