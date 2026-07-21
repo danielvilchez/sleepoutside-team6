@@ -2,28 +2,28 @@ import { renderListWithTemplate } from "./utils.mjs";
 
 export default class ShoppingCart {
 
-    constructor(cartItems, selector) {
-        this.cartItems = cartItems;
-        this.selector = selector;
-    }
+  constructor(cartItems, selector) {
+    this.cartItems = cartItems;
+    this.selector = selector;
+  }
 
 
-    render() {
-        const parentElement = document.querySelector(this.selector);
+  render() {
+    const parentElement = document.querySelector(this.selector);
 
-        renderListWithTemplate(
-            this.cartItemTemplate,
-            parentElement,
-            this.cartItems
-        );
-    }
+    renderListWithTemplate(
+      this.cartItemTemplate,
+      parentElement,
+      this.cartItems
+    );
+  }
 
 
-    cartItemTemplate(item) {
-        return `<li class="cart-card divider">
+  cartItemTemplate(item) {
+    return `<li class="cart-card divider">
       <a href="#" class="cart-card__image">
         <img
-          src="${item.Image}"
+          src="${item.Images.PrimaryMedium}"
           alt="${item.Name}"
         />
       </a>
@@ -44,5 +44,5 @@ export default class ShoppingCart {
         $${item.FinalPrice}
       </p>
     </li>`;
-    }
+  }
 }
