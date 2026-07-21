@@ -44,8 +44,7 @@ export default class ExternalServices {
 
     const data = await response.json();
 
-    console.log("STATUS:", response.status);
-    console.log("SERVER RESPONSE:", data);
+    console.log(data);
 
     return data;
   }
