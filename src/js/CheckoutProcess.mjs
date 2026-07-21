@@ -88,18 +88,22 @@ export default class CheckoutProcess {
 
             cardNumber: formData.cardNumber,
             expiration: formData.expiration,
-            securityCode: formData.securityCode,
+            code: formData.securityCode,
 
             items: this.list.map((item) => {
 
                 return {
                     id: item.Id,
+                    name: item.Name,
+                    price: item.FinalPrice,
                     quantity: 1
                 };
 
             }),
 
-            orderTotal: this.orderTotal
+            orderTotal: this.orderTotal,
+            shipping: this.shipping,
+            tax: this.tax
 
         };
 
@@ -110,8 +114,6 @@ export default class CheckoutProcess {
         return await this.externalServices.checkout(order);
 
     }
-
-
 
     displayOrderTotals() {
 
