@@ -110,8 +110,15 @@ export default class CheckoutProcess {
 
         console.log(JSON.stringify(order, null, 2));
 
+        try {
 
-        return await this.externalServices.checkout(order);
+            return await this.externalServices.checkout(order);
+
+        } catch (err) {
+
+            throw err;
+
+        }
 
     }
 

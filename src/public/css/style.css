@@ -272,3 +272,29 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* Form styles */
+.alert {
+  background-color: #f4b183;
+  border: 1px solid #d97a00;
+  margin: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alert p {
+  margin: 0;
+  padding: 1rem;
+}
+
+.alert .close-btn {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 1rem;
+}
+
+.alert p:last-child {
+  border-bottom: none;
+}

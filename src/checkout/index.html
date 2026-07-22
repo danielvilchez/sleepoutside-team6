@@ -129,19 +129,19 @@
 
           <label>
             Credit Card Number:
-            <input type="text" name="cardNumber" required>
+            <input type="text" name="cardNumber" required pattern="[0-9]{16}">
           </label>
 
 
           <label>
             Expiration Date:
-            <input type="text" name="expiration" required>
+            <input type="text" name="expiration" required pattern="[0-9]{2}/[0-9]{2}">
           </label>
 
 
           <label>
             Security Code:
-            <input type="text" name="securityCode" required>
+            <input type="text" name="securityCode" required pattern="[0-9]{3}">
           </label>
 
 

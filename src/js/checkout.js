@@ -1,5 +1,5 @@
 import CheckoutProcess from "./CheckoutProcess.mjs";
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, alertMessage } from "./utils.mjs";
 
 
 const checkout = new CheckoutProcess(
@@ -82,17 +82,26 @@ if (form) {
 
         try {
             console.log(formData);
+
             const response = await checkout.checkout(formData);
 
             console.log(response);
 
-            alert("Order submitted!");
+            localStorage.removeItem("so-cart");
+
+            window.location.href = "/checkout/success.html";
 
         } catch (error) {
 
-            console.error(error);
+            console.log("ERROR COMPLETO:", error);
 
-            alert("There was an error submitting your order.");
+            for (const key in error.message) {
+
+                alertMessage(error.message[key], false);
+
+            }
+
+            window.scrollTo(0, 0);
 
         }
 
