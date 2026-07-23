@@ -19,10 +19,25 @@ export default class ProductDetails {
 
     addToCart() {
         const cartItems = getLocalStorage("so-cart") || [];
-        cartItems.push(this.product);
-        setLocalStorage("so-cart", cartItems);
-        alertMessage(`${this.product.Name} added to cart!`);
 
+        cartItems.push(this.product);
+
+        setLocalStorage("so-cart", cartItems);
+
+
+        // Animación del carrito
+        const cartIcon = document.querySelector(".cart");
+
+        if (cartIcon) {
+            cartIcon.classList.add("cart-animation");
+
+            setTimeout(() => {
+                cartIcon.classList.remove("cart-animation");
+            }, 500);
+        }
+
+
+        alertMessage(`${this.product.Name} added to cart!`);
     }
 
     renderProductDetails() {

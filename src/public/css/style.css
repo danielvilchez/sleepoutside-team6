@@ -298,3 +298,22 @@ footer {
 .alert p:last-child {
   border-bottom: none;
 }
+
+/* Cart animation */
+.cart-animation {
+  animation: bounce-cart 0.5s ease;
+}
+
+@keyframes bounce-cart {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3) rotate(-10deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
