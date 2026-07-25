@@ -300,3 +300,49 @@ footer {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+body {
+  background-color: var(--page-background, white);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+header,
+footer,
+.product-card,
+.category-card,
+.product-detail {
+  background-color: var(--surface-color, white);
+}
+
+.theme-toggle {
+  align-self: center;
+  display: inline-block;
+  margin: 0 1rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 0.25rem;
+}
+
+html[data-theme="dark"] {
+  --page-background: #202124;
+  --surface-color: #2b2d31;
+  --dark-grey: #f3f3f3;
+  --light-grey: #5f6368;
+  --secondary-color: #6f7a19;
+}
+
+html[data-theme="dark"] .hero .logo {
+  background-color: var(--surface-color);
+}
+
+html[data-theme="dark"] .logo a,
+html[data-theme="dark"] .product-list a,
+html[data-theme="dark"] .category-card {
+  color: var(--dark-grey);
+}
+
+html[data-theme="dark"] .cart svg {
+  fill: var(--dark-grey);
+}

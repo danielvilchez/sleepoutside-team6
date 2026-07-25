@@ -8,12 +8,12 @@ function renderCartContents() {
 
 function cartItemTemplate(item) {
   return `<li class="cart-card divider">
-    <a href="/product_pages/index.html?product=${item.Id}" class="cart-card__image">
+    <a href="${import.meta.env.BASE_URL}product_pages/index.html?product=${item.Id}" class="cart-card__image">
       <img
         src="${item.Images.PrimaryMedium}"
         alt="${item.Name}">
     </a>
-    <a href="/product_pages/index.html?product=${item.Id}">
+    <a href="${import.meta.env.BASE_URL}product_pages/index.html?product=${item.Id}">
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
