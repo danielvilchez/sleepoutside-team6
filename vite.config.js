@@ -3,7 +3,6 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   root: "src/",
-  base: process.env.GITHUB_ACTIONS ? "/sleepoutside-team6/" : "/",
   build: {
     outDir: "../dist",
     rollupOptions: {
@@ -20,3 +19,4 @@ export default defineConfig({
     },
   },
 });
+
