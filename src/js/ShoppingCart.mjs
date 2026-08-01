@@ -1,48 +1,54 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate } from './utils.mjs';
 
 export default class ShoppingCart {
+  constructor(cartItems, selector) {
+    this.cartItems = cartItems || [];
+    this.selector = selector;
+  }
 
-    constructor(cartItems, selector) {
-        this.cartItems = cartItems;
-        this.selector = selector;
-    }
+  render() {
+    const parentElement = document.querySelector(this.selector);
 
+    renderListWithTemplate(
+      this.cartItemTemplate,
+      parentElement,
+      this.cartItems,
+    );
+  }
 
-    render() {
-        const parentElement = document.querySelector(this.selector);
+  cartItemTemplate(item) {
+    const image =
+      item.Images?.PrimaryMedium ||
+      item.Images?.PrimarySmall ||
+      item.Image ||
+      '';
 
-        renderListWithTemplate(
-            this.cartItemTemplate,
-            parentElement,
-            this.cartItems
-        );
-    }
+    const color =
+      item.Colors?.[0]?.ColorName || 'Color not available';
 
+    return `
+      <li class="cart-card divider">
+        <a
+          href="/product_pages/index.html?product=${encodeURIComponent(item.Id)}"
+          class="cart-card__image"
+        >
+          <img src="${image}" alt="${item.Name}" />
+        </a>
 
-    cartItemTemplate(item) {
-        return `<li class="cart-card divider">
-      <a href="#" class="cart-card__image">
-        <img
-          src="${item.Image}"
-          alt="${item.Name}"
-        />
-      </a>
+        <a href="/product_pages/index.html?product=${encodeURIComponent(item.Id)}">
+          <h2 class="card__name">${item.Name}</h2>
+        </a>
 
-      <a href="#">
-        <h2 class="card__name">${item.Name}</h2>
-      </a>
+        <p class="cart-card__color">${color}</p>
 
-      <p class="cart-card__color">
-        ${item.Colors[0].ColorName}
-      </p>
+        <p class="cart-card__quantity">
+          qty: 1
+        </p>
 
-      <p class="cart-card__quantity">
-        qty: 1
-      </p>
-
-      <p class="cart-card__price">
-        $${item.FinalPrice}
-      </p>
-    </li>`;
-    }
+        <p class="cart-card__price">
+          $${item.FinalPrice}
+        </p>
+      </li>
+    `;
+  }
 }

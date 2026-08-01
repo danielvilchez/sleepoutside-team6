@@ -272,3 +272,80 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+/* Wish list */
+
+.wishlist-link {
+  align-self: center;
+  margin-left: auto;
+  margin-right: 1rem;
+  color: var(--tertiary-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.product-detail__actions,
+.wishlist-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.product-detail__actions button,
+.wishlist-card__actions button {
+  flex: 1;
+  margin: 0;
+}
+
+.wishlist-button,
+.remove-wishlist {
+  background-color: var(--tertiary-color);
+}
+
+.wishlist-button:disabled {
+  background-color: gray;
+  cursor: default;
+}
+
+.wishlist-list {
+  list-style: none;
+}
+
+.wishlist-card {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.wishlist-card__image img {
+  width: 100%;
+}
+
+.wishlist-card__details p {
+  padding-left: 0;
+}
+
+@media screen and (max-width: 499px) {
+  header .logo {
+    width: 210px;
+    font-size: 24px;
+  }
+
+  .wishlist-link {
+    margin-left: 0.25rem;
+    margin-right: 0.5rem;
+    font-size: var(--small-font);
+  }
+
+  .product-detail__actions {
+    flex-direction: column;
+  }
+
+  .wishlist-card {
+    grid-template-columns: 90px 1fr;
+  }
+
+  .wishlist-card__actions {
+    flex-direction: column;
+  }
+}
