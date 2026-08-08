@@ -1,9 +1,25 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from './utils.mjs';
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage('so-cart') || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  document.querySelector('.product-list').innerHTML = htmlItems.join('');
+
+  if (cartItems.length > 0) {
+    document.querySelector('.cart-footer').classList.remove('hide');
+    displayCartTotal(cartItems);
+  }
+}
+
+function displayCartTotal(cartItems) {
+  let total = 0;
+
+  cartItems.forEach((item) => {
+    total += item.FinalPrice;
+  });
+
+  document.querySelector('.cart-total').textContent =
+    `Total: $${total.toFixed(2)}`;
 }
 
 function cartItemTemplate(item) {

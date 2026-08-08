@@ -241,6 +241,16 @@ button {
   grid-column: 3;
 }
 
+.cart-footer {
+  text-align: right;
+  font-weight: bold;
+  padding: 1rem 0;
+}
+
+.hide {
+  display: none;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
